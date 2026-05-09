@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>安裝指南 - Reachy Mini</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; }
+        h1, h2, h3 { color: #333; }
+        a { color: #007acc; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .code { background: #f4f4f4; padding: 10px; border-radius: 4px; font-family: monospace; margin: 10px 0; }
+        .note { background: #e7f3ff; padding: 10px; border-left: 4px solid #007acc; margin: 10px 0; }
+        ul { padding-left: 20px; }
+        table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1>📦 安裝指南</h1>
+
+    <h2>第一次使用命令列？🖥️</h2>
+
+    <p>如果您是命令列新手，請點擊這裡</p>
+
+    <h2>1. 📋 先決條件</h2>
+
+    <h3>🐍 安裝 Python</h3>
+
+    <p>我們將使用 <code>uv</code> - 一個快速的 Python 套件管理員，讓安裝變得簡單！</p>
+
+    <h4>步驟 1：安裝 uv</h4>
+
+    <p>Linux / macOS</p>
+    <div class="code">curl -LsSf https://astral.sh/uv/install.sh | sh</div>
+
+    <p>Windows</p>
+    <div class="code">powershell -c "irm https://astral.sh/uv/install.sh | iex"</div>
+
+    <p>✅ 驗證安裝：</p>
+    <div class="code">uv --version</div>
+
+    <h4>步驟 2：安裝 Python</h4>
+
+    <div class="code">uv python install 3.12 --default</div>
+
+    <p>我們推薦 Python 3.12 作為 Reachy Mini 支援的最新版本。</p>
+
+    <h3>📂 安裝 Git 和 Git LFS</h3>
+
+    <p>Linux</p>
+    <div class="code">sudo apt install git git-lfs</div>
+
+    <p>macOS</p>
+    <div class="code">brew install git git-lfs</div>
+
+    <p>Windows</p>
+    <div class="code">winget install --id Git.Git -e --source winget<br>
+    winget install --id GitHub.GitLFS -e --source winget</div>
+
+    <p>✅ 完成安裝：</p>
+    <div class="code">git lfs install</div>
+
+    <table>
+        <tr>
+            <th>需求</th>
+            <th>版本</th>
+            <th>用途</th>
+        </tr>
+        <tr>
+            <td>🐍 Python</td>
+            <td>3.10 - 3.12</td>
+            <td>運行 Reachy Mini SDK</td>
+        </tr>
+        <tr>
+            <td>📂 Git</td>
+            <td>最新</td>
+            <td>下載原始碼和應用程式</td>
+        </tr>
+        <tr>
+            <td>📦 Git LFS</td>
+            <td>最新</td>
+            <td>下載模型資產</td>
+        </tr>
+    </table>
+
+    <h2>2. 🏠 設定虛擬環境</h2>
+
+    <div class="note">
+        <p>為什麼使用虛擬環境？它讓您的 Reachy Mini 安裝與其他 Python 專案隔離，並防止衝突。現代 Python 開發需要這個！</p>
+    </div>
+
+    <h3>建立環境</h3>
+
+    <div class="code">uv venv reachy_mini_env --python 3.12</div>
+
+    <h3>啟動環境</h3>
+
+    <p>Linux / macOS</p>
+    <div class="code">source reachy_mini_env/bin/activate</div>
+
+    <p>Windows</p>
+    <div class="code">reachy_mini_env\Scripts\activate</div>
+
+    <div class="note">
+        <p>✅ 成功指標：您應該在命令列提示的開頭看到 <code>(reachy_mini_env)</code>！</p>
+    </div>
+
+    <h2>3. 🚀 安裝 Reachy Mini</h2>
+
+    <p>選擇您的安裝方法：</p>
+
+    <h3>📦 選項 A：PyPI 🔧 選項 B：來源</h3>
+
+    <div class="note">
+        <p>推薦給大多數使用者 - 只想控制您的機器人？這是給您的！</p>
+    </div>
+
+    <div class="code">uv pip install "reachy-mini"</div>
+
+    <p>如果您想要使用模擬模式，您需要新增 mujoco 額外套件：</p>
+
+    <div class="code">uv pip install "reachy-mini[mujoco]"</div>
+
+    <p>🐧 Linux 使用者：需要額外步驟</p>
+
+    <h2>🎉 恭喜！</h2>
+
+    <p>您已成功安裝 Reachy Mini！您的機器人已準備好活起來。</p>
+
+    <h2>❓ 疑難排解</h2>
+
+    <p>遇到問題？👉 <a href="troubleshooting.html">檢查疑難排解與常見問題指南</a></p>
+
+    <h2>下一步</h2>
+
+    <ul>
+        <li><a href="quickstart.html">快速入門指南</a>：在 Reachy Mini 上運行您的第一個行為</li>
+        <li><a href="python-sdk.html">Python SDK</a>：學習移動、看、說話和聽。</li>
+        <li><a href="integration.html">AI 整合</a>：連接 LLM、建置應用程式，並發佈至 Hugging Face。</li>
+        <li><a href="core-concept.html">核心概念</a>：架構、座標系統和安全限制。</li>
+    </ul>
+</body>
+</html>

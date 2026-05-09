@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>整合與應用程式 - Reachy Mini</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; }
+        h1, h2, h3 { color: #333; }
+        a { color: #007acc; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .code { background: #f4f4f4; padding: 10px; border-radius: 4px; font-family: monospace; margin: 10px 0; }
+        ul { padding-left: 20px; }
+    </style>
+</head>
+<body>
+    <h1>整合與應用程式</h1>
+
+    <p>Reachy Mini 專為 AI 建置者設計。這是整合 LLM 和分享您的作品的方式。</p>
+
+    <h2>建置應用程式</h2>
+
+    <p>我們提供 CLI 工具來產生、檢查和發佈標準應用程式結構（與 Hugging Face Spaces 相容）。請參閱完整指南：<a href="apps.html">建置與發佈應用程式</a>。</p>
+
+    <h2>JavaScript 網頁應用程式</h2>
+
+    <p>想要零安裝、跨平台的應用程式在瀏覽器中運行？請查看 <a href="javascript-sdk.html">JavaScript SDK 與網頁應用程式</a> 指南 - 建置靜態 Hugging Face Spaces，可以通過 WebRTC 從任何裝置（包括您的手機）控制您的機器人。</p>
+
+    <h2>HTTP 與 WebSocket API</h2>
+
+    <p>建置儀表板或非 Python 控制器？Daemon 通過 REST 公開完整控制。</p>
+
+    <ul>
+        <li>文件：<code>http://localhost:8000/docs</code></li>
+        <li>獲取狀態：<code>GET /api/state/full</code></li>
+        <li>WebSocket：<code>ws://localhost:8000/api/state/ws/full</code></li>
+    </ul>
+
+    <h2>AI 實驗提示</h2>
+
+    <ul>
+        <li>對話示範：請查看我們的參考實作，結合 VAD（語音活動檢測）、LLM 和 TTS：<a href="https://github.com/pollen-robotics/reachy_mini_conversation_demo">reachy_mini_conversation_demo</a>。</li>
+        <li>自訂視訊/音訊管道：如果您的 AI 管道需要直接相機或麥克風存取（例如，自訂 OpenCV 檢測器、帶 sounddevice 的 Whisper），您可以使用 <code>media_backend="no_media"</code> 停用內建媒體管理器。請參閱 <a href="media-architecture.html">停用媒體</a> 以獲取詳細資訊。</li>
+    </ul>
+</body>
+</html>

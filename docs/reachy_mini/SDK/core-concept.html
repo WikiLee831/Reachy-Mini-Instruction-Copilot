@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>核心概念與架構 - Reachy Mini</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; }
+        h1, h2, h3 { color: #333; }
+        a { color: #007acc; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .code { background: #f4f4f4; padding: 10px; border-radius: 4px; font-family: monospace; margin: 10px 0; }
+        table { border-collapse: collapse; width: 100%; margin: 20px 0; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        ul { padding-left: 20px; }
+    </style>
+</head>
+<body>
+    <h1>核心概念與架構</h1>
+
+    <p>理解 Reachy Mini 在幕後的工作方式將幫助您建置強大的應用程式和除錯問題。</p>
+
+    <h2>軟體架構</h2>
+
+    <p>Reachy Mini 使用客戶端-伺服器架構：</p>
+
+    <ol>
+        <li><strong>Daemon（伺服器）：</strong>
+            <ul>
+                <li>在連接到機器人的電腦上運行（或模擬中）。</li>
+                <li>處理硬體 I/O（USB/序列）、安全檢查和感測器讀取。</li>
+                <li>公開 REST API（<code>localhost:8000</code>）和 WebSocket。</li>
+            </ul>
+        </li>
+        <li><strong>SDK（客戶端）：</strong>
+            <ul>
+                <li>您的 Python 程式碼（<code>reachy_mini</code> 套件）。</li>
+                <li>通過網路連接到 Daemon。</li>
+                <li>優點：您可以在強大的伺服器上運行您的 AI 程式碼，而 Daemon 在連接到機器人的 Raspberry Pi 上運行。</li>
+            </ul>
+        </li>
+    </ol>
+
+    <h2>座標系統</h2>
+
+    <p>移動機器人時，您將使用兩個主要參考框架：</p>
+
+    <h3>1. 頭部框架</h3>
+
+    <p>位於頭部基部。用於 <code>goto_target</code> 和 <code>set_target</code> 命令。</p>
+
+    <p>Reachy Mini 頭部框架</p>
+
+    <h3>2. 世界框架</h3>
+
+    <p>相對於機器人的基部固定。用於 <code>look_at_world</code> 命令。</p>
+
+    <p>Reachy Mini 世界框架</p>
+
+    <h2>安全限制 ⚠️</h2>
+
+    <p>Reachy Mini 有物理和軟體限制以防止自碰撞和損壞。SDK 將自動將值夾緊到最接近的有效位置。</p>
+
+    <table>
+        <tr>
+            <th>組件</th>
+            <th>限制</th>
+        </tr>
+        <tr>
+            <td>頭部俯仰/滾動</td>
+            <td>[-40°, +40°]</td>
+        </tr>
+        <tr>
+            <td>頭部偏航</td>
+            <td>[-180°, +180°]</td>
+        </tr>
+        <tr>
+            <td>身體偏航</td>
+            <td>[-160°, +160°]</td>
+        </tr>
+        <tr>
+            <td>偏航差異</td>
+            <td>頭部和身體偏航之間的最大 65° 差異</td>
+        </tr>
+    </table>
+
+    <h2>馬達模式</h2>
+
+    <p>您可以改變馬達的行為方式：</p>
+
+    <ul>
+        <li><code>mini.enable_motors()</code>：僵硬。保持位置。</li>
+        <li><code>mini.disable_motors()</code>：鬆弛。無電源。</li>
+        <li><code>mini.enable_gravity_compensation()</code>："軟" 模式。您可以用手移動頭部，它會停留在您離開的地方。（僅適用於 Placo 運動學後端。）</li>
+    </ul>
+
+    <h2>下一步</h2>
+
+    <ul>
+        <li><a href="quickstart.html">快速入門指南</a>：在 Reachy Mini 上運行您的第一個行為</li>
+        <li><a href="python-sdk.html">Python SDK</a>：學習移動、看、說話和聽。</li>
+        <li><a href="integration.html">AI 整合</a>：連接 LLM、建置應用程式，並發佈至 Hugging Face。</li>
+    </ul>
+</body>
+</html>

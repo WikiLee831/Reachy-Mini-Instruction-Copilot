@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reachy Mini 🤖</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; line-height: 1.6; }
+        h1, h2, h3 { color: #333; }
+        a { color: #007acc; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .platform-table { display: flex; gap: 20px; margin: 20px 0; }
+        .platform-card { border: 1px solid #ddd; padding: 20px; border-radius: 8px; flex: 1; }
+        .code { background: #f4f4f4; padding: 10px; border-radius: 4px; font-family: monospace; }
+        ul { padding-left: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Reachy Mini 🤖</h1>
+
+    <h2>⚡️ 組裝並啟動您的機器人</h2>
+
+    <p>選擇您的平台以訪問特定指南：</p>
+
+    <div class="platform-table">
+        <div class="platform-card">
+            <h3>完整自主體驗</h3>
+            <p>Raspberry Pi CM4 + 電池 + WiFi</p>
+            <a href="platforms/reachy_mini/wireless.html">👉 前往無線指南</a>
+        </div>
+        <div class="platform-card">
+            <h3>開發者版本</h3>
+            <p>通過 USB 連接至您的電腦</p>
+            <a href="platforms/reachy_mini_lite/lite.html">👉 前往 Lite 指南</a>
+        </div>
+        <div class="platform-card">
+            <h3>無需硬體</h3>
+            <p>在 MuJoCo 中進行原型設計</p>
+            <a href="platforms/simulation/simulation.html">👉 前往模擬指南</a>
+        </div>
+    </div>
+
+    <blockquote>
+        <p>⚡ 專業提示：安裝 <a href="https://docs.astral.sh/uv/getting-started/installation/">uv</a> 以獲得 10-100 倍更快的應用程式安裝（自動檢測，回退到 pip）。</p>
+    </blockquote>
+
+    <h2>📱 應用程式與生態系統</h2>
+
+    <p>Reachy Mini 配備由 Hugging Face Spaces 驅動的應用商店。您可以通過 Reachy Mini Control 輕鬆一鍵安裝這些應用程式！</p>
+
+    <ul>
+        <li>🗣️ <a href="https://huggingface.co/spaces/pollen-robotics/reachy_mini_conversation_app">對話應用程式</a>：與 Reachy Mini 自然對話（由 LLM 驅動）。</li>
+        <li>📻 <a href="https://huggingface.co/spaces/pollen-robotics/reachy_mini_radio">廣播</a>：與 Reachy Mini 一起聽廣播！</li>
+        <li>👋 <a href="https://huggingface.co/spaces/pollen-robotics/hand_tracker_v2">手部追蹤器</a>：機器人實時跟隨您的手部動作。</li>
+    </ul>
+
+    <p>👉 <a href="https://hf.co/reachy-mini/#/apps">在 Hugging Face 上瀏覽所有應用程式</a></p>
+
+    <h2>🚀 開始使用 Reachy Mini SDK</h2>
+
+    <h3>快速預覽</h3>
+
+    <p>只需幾行程式碼即可控制您的機器人：</p>
+
+    <div class="code">
+        from reachy_mini import ReachyMini<br>
+        from reachy_mini.utils import create_head_pose<br><br>
+        with ReachyMini() as mini:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;# 向上看並傾斜頭部<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;mini.goto_target(<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;head=create_head_pose(z=10, roll=15, degrees=True, mm=True),<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;duration=1.0<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;)
+    </div>
+
+    <h3>使用者指南</h3>
+
+    <ul>
+        <li><a href="SDK/installation.html">安裝</a>：5 分鐘設定您的電腦</li>
+        <li><a href="SDK/quickstart.html">快速入門指南</a>：在 Reachy Mini 上運行您的第一個行為</li>
+        <li><a href="SDK/python-sdk.html">Python SDK</a>：學習移動、看、說話和聽。</li>
+        <li><a href="SDK/integration.html">AI 整合</a>：連接 LLM、建置應用程式，並發佈至 Hugging Face。</li>
+        <li><a href="SDK/apps.html">建置與發佈應用程式</a>：建立、測試、發佈和除錯 Reachy Mini 應用程式。</li>
+        <li><a href="SDK/core-concept.html">核心概念</a>：架構、座標系統和安全限制。</li>
+        <li><a href="sdk-tutorials.html">教學</a>：逐步學習 SDK 的實作 Jupyter 筆記本。</li>
+        <li>📂 <a href="https://github.com/pollen-robotics/reachy_mini/tree/main/examples">瀏覽範例資料夾</a></li>
+    </ul>
+
+    <h2>🛠 硬體概覽</h2>
+
+    <p>Reachy Mini 機器人以套件形式銷售，通常需要 2 到 3 小時組裝。詳細的逐步指南可在上述特定平台資料夾中找到。</p>
+
+    <ul>
+        <li>Reachy Mini（無線）：在板上運行（RPi CM4），自主，包含 IMU。<a href="platforms/reachy_mini/hardware.html">查看規格</a></li>
+        <li>Reachy Mini Lite：在您的 PC 上運行，通過牆壁插座供電。<a href="platforms/reachy_mini_lite/hardware.html">查看規格</a></li>
+    </ul>
+
+    <h2>❓ 疑難排解</h2>
+
+    <p>遇到問題？👉 <a href="troubleshooting.html">檢查疑難排解與常見問題指南</a></p>
+
+    <h2>🤝 社群與貢獻</h2>
+
+    <ul>
+        <li>加入社群：在 <a href="https://discord.gg/2bAhWfXme9">Discord</a> 上分享您的 Reachy 時刻，一起建置應用程式並獲得幫助。</li>
+        <li>發現錯誤？在此 <a href="https://github.com/pollen-robotics/reachy_mini/issues">儲存庫</a> 中開啟問題。</li>
+    </ul>
+
+    <h2>授權</h2>
+
+    <p>此專案根據 Apache 2.0 授權許可。詳見 <a href="https://github.com/pollen-robotics/reachy_mini/tree/main/LICENSE">LICENSE</a> 文件。硬體設計文件根據 Creative Commons BY-SA-NC 授權。</p>
+</body>
+</html>
