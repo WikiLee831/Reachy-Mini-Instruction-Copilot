@@ -3,532 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reachy Mini 🤖</title>
+    <title>Reachy Mini 教學筆記本</title>
     <style>
-        /* Hugging Face 風格的 CSS */
-        :root {
-            --hf-orange: #ff9900;
-            --hf-blue: #007acc;
-            --hf-gray: #f5f5f5;
-            --hf-dark: #1a1a1a;
-            --hf-border: #e1e5e9;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            margin: 0;
-            background-color: #fff;
-        }
-
-        /* 頂部導航 */
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 1rem 2rem;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: white;
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .nav-links a:hover {
-            text-decoration: underline;
-        }
-
-        /* 主容器 */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            padding: 2rem;
-            gap: 2rem;
-        }
-
-        /* 側邊欄 */
-        .sidebar {
-            width: 250px;
-            flex-shrink: 0;
-        }
-
-        .sidebar-section {
-            background: white;
-            border: 1px solid var(--hf-border);
-            border-radius: 8px;
-            margin-bottom: 1rem;
-            overflow: hidden;
-        }
-
-        .sidebar-title {
-            background: var(--hf-gray);
-            padding: 1rem;
-            font-weight: 600;
-            border-bottom: 1px solid var(--hf-border);
-        }
-
-        .sidebar-links {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .sidebar-links li {
-            border-bottom: 1px solid var(--hf-border);
-        }
-
-        .sidebar-links li:last-child {
-            border-bottom: none;
-        }
-
-        .sidebar-links a {
-            display: block;
-            padding: 0.75rem 1rem;
-            color: #333;
-            text-decoration: none;
-            transition: background-color 0.2s;
-        }
-
-        .sidebar-links a:hover {
-            background-color: var(--hf-gray);
-        }
-
-        .sidebar-links a.active {
-            background-color: var(--hf-blue);
-            color: white;
-        }
-
-        /* 主內容 */
-        .main-content {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .content-section {
-            background: white;
-            border: 1px solid var(--hf-border);
-            border-radius: 8px;
-            padding: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .hero {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: #666;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* 平台卡片 */
-        .platforms {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 1.5rem;
-            margin: 2rem 0;
-        }
-
-        .platform-card {
-            background: white;
-            border: 1px solid var(--hf-border);
-            border-radius: 12px;
-            padding: 2rem;
-            text-align: center;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .platform-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-
-        .platform-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .platform-card h3 {
-            margin: 1rem 0;
-            color: var(--hf-dark);
-        }
-
-        .platform-card p {
-            color: #666;
-            margin-bottom: 1.5rem;
-        }
-
-        .platform-link {
-            display: inline-block;
-            background: var(--hf-blue);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: background-color 0.2s;
-        }
-
-        .platform-link:hover {
-            background: #0056b3;
-        }
-
-        /* 應用程式網格 */
-        .apps-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-
-        .app-card {
-            background: white;
-            border: 1px solid var(--hf-border);
-            border-radius: 8px;
-            padding: 1.5rem;
-            text-align: center;
-        }
-
-        .app-icon {
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        .app-card h4 {
-            margin: 0.5rem 0;
-            color: var(--hf-dark);
-        }
-
-        .app-card p {
-            color: #666;
-            font-size: 0.9rem;
-            margin: 0;
-        }
-
-        /* 程式碼區塊 */
-        .code-block {
-            background: #f8f9fa;
-            border: 1px solid var(--hf-border);
-            border-radius: 6px;
-            padding: 1rem;
-            margin: 1rem 0;
-            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
-            font-size: 0.9rem;
-            overflow-x: auto;
-        }
-
-        /* 提示框 */
-        .tip {
-            background: #e3f2fd;
-            border-left: 4px solid var(--hf-blue);
-            padding: 1rem;
-            margin: 1rem 0;
-            border-radius: 4px;
-        }
-
-        .tip strong {
-            color: var(--hf-blue);
-        }
-
-        /* 響應式設計 */
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-                padding: 1rem;
-            }
-
-            .sidebar {
-                width: 100%;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .platforms {
-                grid-template-columns: 1fr;
-            }
-
-            .header-content {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .nav-links {
-                gap: 1rem;
-            }
-        }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; margin: 0; background: #fff; color: #1a1a1a; }
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1.5rem 2rem; }
+        .header h1 { margin: 0; font-size: 2.5rem; }
+        .header p { margin: 0.75rem 0 0; color: rgba(255,255,255,0.9); max-width: 720px; }
+        .container { max-width: 1080px; margin: 2rem auto; padding: 0 1.5rem; }
+        .intro { background: #f8f9fa; border: 1px solid #e1e5e9; border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem; }
+        .intro h2 { margin-top: 0; }
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
+        .card { border: 1px solid #e1e5e9; border-radius: 18px; overflow: hidden; background: white; box-shadow: 0 12px 30px rgba(15,23,42,0.05); }
+        .card-body { padding: 1.5rem; }
+        .card-title { margin: 0 0 0.75rem; font-size: 1.25rem; }
+        .card-description { margin: 0 0 1rem; color: #475569; line-height: 1.7; }
+        .card-link { display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 600; color: #2563eb; text-decoration: none; }
+        .card-link:hover { text-decoration: underline; }
+        .note { background: #e0f2fe; border-left: 4px solid #0ea5e9; padding: 1rem; border-radius: 12px; margin: 1.5rem 0; color: #0f172a; }
+        .footer { margin: 3rem 0 2rem; font-size: 0.95rem; color: #475569; text-align: center; }
+        .footer a { color: #2563eb; text-decoration: none; }
+        .footer a:hover { text-decoration: underline; }
+        @media (max-width: 640px) { .header { padding: 1.25rem 1rem; } .container { margin: 1rem auto; padding: 0 1rem; } }
     </style>
 </head>
 <body>
-    <!-- 頂部導航 -->
     <header class="header">
-        <div class="header-content">
-            <a href="#" class="logo">🤖 Reachy Mini 文檔</a>
-            <nav class="nav-links">
-                <a href="#getting-started">開始使用</a>
-                <a href="#sdk">SDK</a>
-                <a href="#apps">應用程式</a>
-                <a href="#troubleshooting">疑難排解</a>
-            </nav>
-        </div>
+        <h1>Reachy Mini 教學筆記本</h1>
+        <p>這些教學是實作型 Jupyter 筆記本，帶您逐步學習 Reachy Mini Python SDK，從連線、控制動作到媒體功能。</p>
     </header>
 
-    <div class="container">
-        <!-- 側邊欄 -->
-        <aside class="sidebar">
-            <div class="sidebar-section">
-                <div class="sidebar-title">Quick links</div>
-                <ul class="sidebar-links">
-                    <li><a href="#getting-started" class="active">⚡️ Build and start your own robot</a></li>
-                    <li><a href="#apps">📱 Apps & Ecosystem</a></li>
-                    <li><a href="#sdk">🚀 Getting Started with Reachy Mini SDK</a></li>
-                    <li><a href="#hardware">🛠 Hardware Overview</a></li>
-                    <li><a href="#troubleshooting">❓ Troubleshooting</a></li>
-                    <li><a href="#community">🤝 Community & Contributing</a></li>
-                </ul>
+    <main class="container">
+        <section class="intro">
+            <h2>教學概述</h2>
+            <p>本頁內容來自 Hugging Face Reachy Mini SDK 教學頁面，已翻譯為繁體中文。這些教學適合已安裝 Reachy Mini SDK，並能透過網路存取運行中的機器人。</p>
+            <div class="note">
+                <strong>提示：</strong>如果您還沒有安裝 SDK，請先參考官方安裝指南：<a href="https://huggingface.co/docs/reachy_mini/SDK/installation">Reachy Mini 安裝</a>。
             </div>
+        </section>
 
-            <div class="sidebar-section">
-                <div class="sidebar-title">SDK 指南</div>
-                <ul class="sidebar-links">
-                    <li><a href="SDK/installation.html">安裝</a></li>
-                    <li><a href="SDK/quickstart.html">快速入門</a></li>
-                    <li><a href="SDK/python-sdk.html">Python SDK</a></li>
-                    <li><a href="SDK/integration.html">AI 整合</a></li>
-                    <li><a href="SDK/core-concept.html">核心概念</a></li>
-                </ul>
+        <section>
+            <div class="card-grid">
+                <article class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">📓 Notebook 0 — First Connection and Movement</h3>
+                        <p class="card-description">學習如何連接 Reachy Mini，並控制頭部位置與天線。此筆記本包括：建立連線、移動頭部、旋轉俯仰偏航、控制天線，以及結合動作與安全最佳實務。</p>
+                        <a class="card-link" href="https://github.com/pollen-robotics/reachy_mini/blob/main/docs/notebooks/0-First-Connection-and-Movement.ipynb">👉 在 GitHub 上開啟</a>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="card-body">
+                        <h3 class="card-title">📓 Notebook 1 — Basic Media: Camera and Audio</h3>
+                        <p class="card-description">學習如何使用 Reachy Mini 的媒體硬體：擷取內建相機影像、錄製麥克風音訊、以及透過喇叭播放聲音。</p>
+                        <a class="card-link" href="https://github.com/pollen-robotics/reachy_mini/blob/main/docs/notebooks/1-Basic-Media-Camera-and-Audio.ipynb">👉 在 GitHub 上開啟</a>
+                    </div>
+                </article>
             </div>
-        </aside>
+        </section>
 
-        <!-- 主內容 -->
-        <main class="main-content">
-            <!-- 英雄區塊 -->
-            <section class="hero">
-                <h1>Reachy Mini 🤖</h1>
-                <p>開放原始碼的表現型機器人，專為駭客和 AI 建置者設計</p>
-            </section>
+        <section class="note">
+            <strong>連結：</strong>
+            <a href="https://github.com/pollen-robotics/reachy_mini/blob/main/docs/source/sdk-tutorials.md">更新於 GitHub</a>
+            • <a href="https://huggingface.co/docs/reachy_mini/index">← Reachy Mini</a>
+            • <a href="https://huggingface.co/docs/reachy_mini/platforms/reachy_mini/get_started">Getting started →</a>
+        </section>
+    </main>
 
-            <!-- 開始使用 -->
-            <section id="getting-started" class="content-section">
-                <h2>⚡️ 組裝並啟動您的機器人</h2>
-                <p>選擇您的平台以存取特定指南：</p>
-
-                <div id="platforms" class="platforms">
-                    <div class="platform-card">
-                        <div class="platform-icon">🔋</div>
-                        <h3>完整自主體驗</h3>
-                        <p>Raspberry Pi CM4 + 電池 + WiFi</p>
-                        <a href="https://huggingface.co/docs/reachy_mini/platforms/reachy_mini/wireless" class="platform-link">查看無線指南</a>
-                    </div>
-                    <div class="platform-card">
-                        <div class="platform-icon">💻</div>
-                        <h3>開發者版本</h3>
-                        <p>通過 USB 連接至您的電腦</p>
-                        <a href="https://huggingface.co/docs/reachy_mini/platforms/reachy_mini_lite/lite" class="platform-link">查看 Lite 指南</a>
-                    </div>
-                    <div class="platform-card">
-                        <div class="platform-icon">🎮</div>
-                        <h3>無需硬體</h3>
-                        <p>在 MuJoCo 中進行原型設計</p>
-                        <a href="https://huggingface.co/docs/reachy_mini/platforms/simulation/simulation" class="platform-link">查看模擬指南</a>
-                    </div>
-                </div>
-
-                <div class="tip">
-                    <strong>⚡ 專業提示：</strong> 安裝 <a href="https://docs.astral.sh/uv/getting-started/installation/">uv</a> 以獲得 10-100 倍更快的應用程式安裝（自動檢測，回退到 pip）。
-                </div>
-            </section>
-
-            <!-- 應用程式與生態系統 -->
-            <section id="apps" class="content-section">
-                <h2>📱 應用程式與生態系統</h2>
-                <p>Reachy Mini 配備由 Hugging Face Spaces 驅動的應用商店。您可以通過 Reachy Mini Control 輕鬆一鍵安裝這些應用程式！</p>
-
-                <div class="apps-grid">
-                    <div class="app-card">
-                        <div class="app-icon">🗣️</div>
-                        <h4>對話應用程式</h4>
-                        <p>與 Reachy Mini 自然對話（由 LLM 驅動）</p>
-                    </div>
-                    <div class="app-card">
-                        <div class="app-icon">📻</div>
-                        <h4>廣播</h4>
-                        <p>與 Reachy Mini 一起聽廣播！</p>
-                    </div>
-                    <div class="app-card">
-                        <div class="app-icon">👋</div>
-                        <h4>手部追蹤器</h4>
-                        <p>機器人實時跟隨您的手部動作</p>
-                    </div>
-                </div>
-
-                <p style="text-align: center; margin-top: 2rem;">
-                    <a href="https://hf.co/reachy-mini/#/apps" class="platform-link">在 Hugging Face 上瀏覽所有應用程式</a>
-                </p>
-            </section>
-
-            <!-- SDK 快速預覽 -->
-            <section id="sdk" class="content-section">
-                <h2>🚀 Reachy Mini SDK 快速預覽</h2>
-                <p>只需幾行程式碼即可控制您的機器人：</p>
-
-                <div class="code-block">
-from reachy_mini import ReachyMini<br>
-from reachy_mini.utils import create_head_pose<br><br>
-with ReachyMini() as mini:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;# 向上看並傾斜頭部<br>
-&nbsp;&nbsp;&nbsp;&nbsp;mini.goto_target(<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;head=create_head_pose(z=10, roll=15, degrees=True, mm=True),<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;duration=1.0<br>
-&nbsp;&nbsp;&nbsp;&nbsp;)
-                </div>
-
-                <h3>SDK 文檔</h3>
-                <ul>
-                    <li><a href="SDK/installation.html">📦 安裝</a>：5 分鐘設定您的電腦</li>
-                    <li><a href="SDK/quickstart.html">⚡ 快速入門指南</a>：運行您的第一個行為</li>
-                    <li><a href="SDK/python-sdk.html">🐍 Python SDK</a>：學習移動、看、說話和聽</li>
-                    <li><a href="SDK/integration.html">🤖 AI 整合</a>：連接 LLM、建置應用程式</li>
-                    <li><a href="SDK/core-concept.html">🏗️ 核心概念</a>：架構、座標系統和安全限制</li>
-                    <li><a href="https://github.com/pollen-robotics/reachy_mini/tree/main/examples">📂 範例資料夾</a></li>
-                </ul>
-            </section>
-
-            <!-- 硬體概覽 -->
-            <section id="hardware" class="content-section">
-                <h2>🛠️ 硬體概覽</h2>
-                <p>Reachy Mini 機器人以套件形式銷售，通常需要 2 到 3 小時組裝。詳細的逐步指南可在上述特定平台資料夾中找到。</p>
-
-                <div class="platforms">
-                    <div class="platform-card">
-                        <div class="platform-icon">📡</div>
-                        <h3>Reachy Mini（無線）</h3>
-                        <p>在板上運行（RPi CM4），自主，包含 IMU</p>
-                        <a href="https://huggingface.co/docs/reachy_mini/platforms/reachy_mini/hardware" class="platform-link">查看規格</a>
-                    </div>
-                    <div class="platform-card">
-                        <div class="platform-icon">🔌</div>
-                        <h3>Reachy Mini Lite</h3>
-                        <p>在您的 PC 上運行，通過牆壁插座供電</p>
-                        <a href="https://huggingface.co/docs/reachy_mini/platforms/reachy_mini_lite/hardware" class="platform-link">查看規格</a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 社群 -->
-            <section id="community" class="content-section">
-                <h2>🤝 社群與貢獻</h2>
-                <ul>
-                    <li>💬 加入社群：在 <a href="https://discord.gg/2bAhWfXme9">Discord</a> 上分享您的 Reachy 時刻</li>
-                    <li>🐛 發現錯誤？在 <a href="https://github.com/pollen-robotics/reachy_mini/issues">GitHub</a> 上開啟問題</li>
-                </ul>
-
-                <h3>授權</h3>
-                <p>此專案根據 Apache 2.0 授權許可。硬體設計文件根據 Creative Commons BY-SA-NC 授權。</p>
-            </section>
-        </main>
-    </div>
-</body>
-</html>
-
-    <ul>
-        <li>🗣️ <a href="https://huggingface.co/spaces/pollen-robotics/reachy_mini_conversation_app">對話應用程式</a>：與 Reachy Mini 自然對話（由 LLM 驅動）。</li>
-        <li>📻 <a href="https://huggingface.co/spaces/pollen-robotics/reachy_mini_radio">廣播</a>：與 Reachy Mini 一起聽廣播！</li>
-        <li>👋 <a href="https://huggingface.co/spaces/pollen-robotics/hand_tracker_v2">手部追蹤器</a>：機器人實時跟隨您的手部動作。</li>
-    </ul>
-
-    <p>👉 <a href="https://hf.co/reachy-mini/#/apps">在 Hugging Face 上瀏覽所有應用程式</a></p>
-
-    <h2>🚀 開始使用 Reachy Mini SDK</h2>
-
-    <h3>快速預覽</h3>
-
-    <p>只需幾行程式碼即可控制您的機器人：</p>
-
-    <div class="code">
-        from reachy_mini import ReachyMini<br>
-        from reachy_mini.utils import create_head_pose<br><br>
-        with ReachyMini() as mini:<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;# 向上看並傾斜頭部<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;mini.goto_target(<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;head=create_head_pose(z=10, roll=15, degrees=True, mm=True),<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;duration=1.0<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;)
-    </div>
-
-    <h3>使用者指南</h3>
-
-    <ul>
-        <li><a href="SDK/installation.html">安裝</a>：5 分鐘設定您的電腦</li>
-        <li><a href="SDK/quickstart.html">快速入門指南</a>：在 Reachy Mini 上運行您的第一個行為</li>
-        <li><a href="SDK/python-sdk.html">Python SDK</a>：學習移動、看、說話和聽。</li>
-        <li><a href="SDK/integration.html">AI 整合</a>：連接 LLM、建置應用程式，並發佈至 Hugging Face。</li>
-        <li><a href="SDK/core-concept.html">核心概念</a>：架構、座標系統和安全限制。</li>
-        <li>📂 <a href="https://github.com/pollen-robotics/reachy_mini/tree/main/examples">瀏覽範例資料夾</a></li>
-    </ul>
-
-    <h2>🛠 硬體概覽</h2>
-
-    <p>Reachy Mini 機器人以套件形式銷售，通常需要 2 到 3 小時組裝。詳細的逐步指南可在上述特定平台資料夾中找到。</p>
-
-    <ul>
-        <li>Reachy Mini（無線）：在板上運行（RPi CM4），自主，包含 IMU。<a href="platforms/reachy_mini/hardware.html">查看規格</a></li>
-        <li>Reachy Mini Lite：在您的 PC 上運行，通過牆壁插座供電。<a href="platforms/reachy_mini_lite/hardware.html">查看規格</a></li>
-    </ul>
-
-    <h2>❓ 疑難排解</h2>
-
-    <p>遇到問題？👉 <a href="troubleshooting.html">檢查疑難排解與常見問題指南</a></p>
-
-    <h2>🤝 社群與貢獻</h2>
-
-    <ul>
-        <li>加入社群：在 <a href="https://discord.gg/2bAhWfXme9">Discord</a> 上分享您的 Reachy 時刻，一起建置應用程式並獲得幫助。</li>
-        <li>發現錯誤？在此 <a href="https://github.com/pollen-robotics/reachy_mini/issues">儲存庫</a> 中開啟問題。</li>
-    </ul>
-
-    <h2>授權</h2>
-
-    <p>此專案根據 Apache 2.0 授權許可。詳見 <a href="https://github.com/pollen-robotics/reachy_mini/tree/main/LICENSE">LICENSE</a> 文件。硬體設計文件根據 Creative Commons BY-SA-NC 授權。</p>
+    <footer class="footer">
+        <p>Reachy Mini 文檔 - 來自 Hugging Face 官方教程的繁體中文翻譯。</p>
+        <p><a href="https://huggingface.co/">Hugging Face</a></p>
+    </footer>
 </body>
 </html>
