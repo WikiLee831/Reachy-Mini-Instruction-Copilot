@@ -13,12 +13,15 @@
         .intro { background: #f8f9fa; border: 1px solid #e1e5e9; border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem; }
         .intro h2 { margin-top: 0; }
         .page-layout { display: grid; grid-template-columns: 280px 1fr; gap: 1.5rem; align-items: start; }
-        .sidebar { background: #f8f9fa; border: 1px solid #e1e5e9; border-radius: 18px; padding: 1.5rem; }
-        .sidebar h2 { margin-top: 0; font-size: 1.1rem; }
+        .sidebar { background: #f8f9fa; border: 1px solid #e1e5e9; border-radius: 18px; padding: 1.5rem; max-height: 90vh; overflow-y: auto; }
+        .sidebar-section { margin-bottom: 1.5rem; }
+        .sidebar-section:last-child { margin-bottom: 0; }
+        .sidebar-section-title { margin: 0 0 0.75rem; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.05em; color: #64748b; text-transform: uppercase; }
         .sidebar-list { list-style: none; padding: 0; margin: 0; }
-        .sidebar-list li { margin-bottom: 0.75rem; }
-        .sidebar-list a { color: #2563eb; text-decoration: none; line-height: 1.6; }
-        .sidebar-list a:hover { text-decoration: underline; }
+        .sidebar-list li { margin-bottom: 0.5rem; }
+        .sidebar-list a { color: #475569; text-decoration: none; line-height: 1.6; font-size: 0.95rem; display: block; padding: 0.25rem 0; }
+        .sidebar-list a:hover { color: #2563eb; }
+        .sidebar-list .sidebar-active a { color: #2563eb; font-weight: 600; }
         .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 1rem; }
         .card { border: 1px solid #e1e5e9; border-radius: 18px; overflow: hidden; background: white; box-shadow: 0 12px 30px rgba(15,23,42,0.05); }
         .card-body { padding: 1.5rem; }
@@ -43,13 +46,41 @@
     <main class="container">
         <div class="page-layout">
             <aside class="sidebar">
-                <h2>內容導覽</h2>
-                <ul class="sidebar-list">
-                    <li><a href="#overview">Overview</a></li>
-                    <li><a href="#notebook-0">Notebook 0 — First Connection and Movement</a></li>
-                    <li><a href="#notebook-1">Notebook 1 — Basic Media: Camera and Audio</a></li>
-                    <li><a href="#related-links">Related links</a></li>
-                </ul>
+                <div class="sidebar-section">
+                    <h3 class="sidebar-section-title">GET STARTED</h3>
+                    <ul class="sidebar-list">
+                        <li><a href="https://huggingface.co/docs/reachy_mini/index">Reachy Mini</a></li>
+                        <li class="sidebar-active"><a href="#overview">SDK Tutorials</a></li>
+                    </ul>
+                </div>
+                <div class="sidebar-section">
+                    <h3 class="sidebar-section-title">REACHY MINI (WIRELESS)</h3>
+                    <ul class="sidebar-list">
+                        <li><a href="https://huggingface.co/docs/reachy_mini/platforms/reachy_mini/get_started">Getting started</a></li>
+                        <li><a href="https://huggingface.co/docs/reachy_mini/platforms/reachy_mini/hardware">Hardware</a></li>
+                        <li><a href="https://huggingface.co/docs/reachy_mini/platforms/reachy_mini/usage">Usage</a></li>
+                        <li><a href="https://huggingface.co/docs/reachy_mini/platforms/reachy_mini/media_advanced">Media Advanced Controls</a></li>
+                        <li><a href="https://huggingface.co/docs/reachy_mini/platforms/reachy_mini/reset">Reset</a></li>
+                        <li><a href="https://huggingface.co/docs/reachy_mini/platforms/reachy_mini/install_daemon">Install Daemon from Branch</a></li>
+                        <li><a href="https://huggingface.co/docs/reachy_mini/platforms/reachy_mini/development">Development Workflow</a></li>
+                        <li><a href="https://huggingface.co/docs/reachy_mini/platforms/reachy_mini/reflash_iso">Reflash the ISO</a></li>
+                    </ul>
+                </div>
+                <div class="sidebar-section">
+                    <h3 class="sidebar-section-title">REACHY MINI LITE</h3>
+                    <ul class="sidebar-list">
+                        <li><a href="https://huggingface.co/docs/reachy_mini/platforms/reachy_mini_lite/get_started">Getting started</a></li>
+                        <li><a href="https://huggingface.co/docs/reachy_mini/platforms/reachy_mini_lite/hardware">Hardware</a></li>
+                        <li><a href="https://huggingface.co/docs/reachy_mini/platforms/reachy_mini_lite/usage">Usage</a></li>
+                    </ul>
+                </div>
+                <div class="sidebar-section">
+                    <h3 class="sidebar-section-title">SDK</h3>
+                    <ul class="sidebar-list">
+                        <li><a href="#notebook-0">Notebook 0 — First Connection and Movement</a></li>
+                        <li><a href="#notebook-1">Notebook 1 — Basic Media: Camera and Audio</a></li>
+                    </ul>
+                </div>
             </aside>
 
             <div>
