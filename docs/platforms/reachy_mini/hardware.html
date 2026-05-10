@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reachy Mini 硬體規格</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; margin: 0; background: #fff; color: #1a1a1a; }
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1.5rem 2rem; }
+        .header h1 { margin: 0; font-size: 2.5rem; }
+        .header p { margin: 0.75rem 0 0; color: rgba(255,255,255,0.9); max-width: 720px; }
+        .container { max-width: 1080px; margin: 2rem auto; padding: 0 1.5rem; }
+        .page-layout { display: grid; grid-template-columns: 280px 1fr; gap: 1.5rem; align-items: start; }
+        .sidebar { background: #f8f9fa; border: 1px solid #e1e5e9; border-radius: 18px; padding: 1.5rem; max-height: 90vh; overflow-y: auto; }
+        .sidebar-section { margin-bottom: 1.5rem; }
+        .sidebar-section:last-child { margin-bottom: 0; }
+        .sidebar-section-title { margin: 0 0 0.75rem; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.05em; color: #64748b; text-transform: uppercase; }
+        .sidebar-list { list-style: none; padding: 0; margin: 0; }
+        .sidebar-list li { margin-bottom: 0.5rem; }
+        .sidebar-list a { color: #475569; text-decoration: none; line-height: 1.6; font-size: 0.95rem; display: block; padding: 0.25rem 0; }
+        .sidebar-list a:hover { color: #2563eb; }
+        .sidebar-list .sidebar-active a { color: #2563eb; font-weight: 600; }
+        .content { background: white; }
+        .content h1 { margin-top: 0; font-size: 2rem; margin-bottom: 1rem; }
+        .content h2 { margin-top: 2rem; font-size: 1.5rem; margin-bottom: 1rem; color: #1a1a1a; }
+        .content h3 { font-size: 1.2rem; margin-top: 1.5rem; margin-bottom: 0.75rem; }
+        .content p { line-height: 1.8; color: #475569; margin: 0 0 1rem; }
+        .content ul, .content ol { margin: 1rem 0; padding-left: 2rem; }
+        .content li { margin-bottom: 0.5rem; line-height: 1.7; }
+        .specs-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; }
+        .specs-table th, .specs-table td { border: 1px solid #e1e5e9; padding: 0.75rem; text-align: left; }
+        .specs-table th { background: #f8f9fa; font-weight: 600; }
+        .specs-table tr:nth-child(even) { background: #fafbfc; }
+        .external-link-box { background: #e7f3ff; border: 1px solid #b3d9ff; border-radius: 8px; padding: 1.5rem; margin: 2rem 0; }
+        .external-link-box h3 { margin-top: 0; color: #0066cc; }
+        .external-link-box a { color: #0066cc; font-weight: 600; text-decoration: none; }
+        .external-link-box a:hover { text-decoration: underline; }
+        .nav-links { display: flex; justify-content: space-between; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #e1e5e9; }
+        .nav-links a { color: #2563eb; text-decoration: none; font-weight: 600; }
+        .nav-links a:hover { text-decoration: underline; }
+        .footer { margin: 3rem 0 2rem; font-size: 0.95rem; color: #475569; text-align: center; }
+        @media (max-width: 980px) { .page-layout { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Reachy Mini 硬體規格</h1>
+        <p>詳細的硬體規格、尺寸和元件信息。</p>
+    </header>
+
+    <main class="container">
+        <div class="page-layout">
+            <aside class="sidebar">
+                <div class="sidebar-section">
+                    <h3 class="sidebar-section-title">REACHY MINI (WIRELESS)</h3>
+                    <ul class="sidebar-list">
+                        <li><a href="get_started.html">Getting started</a></li>
+                        <li class="sidebar-active"><a href="hardware.html">Hardware</a></li>
+                        <li><a href="usage.html">Usage</a></li>
+                        <li><a href="media_advanced.html">Media Advanced Controls</a></li>
+                        <li><a href="reset.html">Reset</a></li>
+                        <li><a href="install_daemon.html">Install Daemon from Branch</a></li>
+                        <li><a href="development.html">Development Workflow</a></li>
+                        <li><a href="reflash_iso.html">Reflash the ISO</a></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <div class="content">
+                <h1>📋 Reachy Mini 硬體規格</h1>
+                
+                <h2>全體說明</h2>
+                <p><strong>尺寸：</strong> 30x20x15.5cm（展開時）</p>
+                <p><strong>質量：</strong> 1.475 公斤</p>
+                <p><strong>材料：</strong> ABS、PC、鋁、鋼</p>
+
+                <h2>自由度 (DOF)</h2>
+                <ul>
+                    <li><strong>頭部：</strong> 6 自由度（3 旋轉 & 3 平移）</li>
+                    <li><strong>身體：</strong> 1 旋轉</li>
+                    <li><strong>天線：</strong> 1 旋轉（x2）</li>
+                </ul>
+
+                <h2>電源</h2>
+                <p><strong>輸入電壓：</strong> 6.8 - 7.6V</p>
+                <p><strong>電池：</strong> LiFePO4 電池，2000mAh，6.4V，12.8Wh，具有過充保護、過放保護、過流保護、短路保護和溫度感測器。</p>
+
+                <h2>感應器和相機</h2>
+                <ul>
+                    <li><strong>廣角相機：</strong> 120° - 12MP - 自動對焦（Sony IMX708）</li>
+                    <li><strong>麥克風陣列：</strong> 4 個 PDM MEMS 數字麥克風
+                        <ul>
+                            <li>16 kHz 最大採樣率</li>
+                            <li>-26 dB FS 靈敏度</li>
+                            <li>64 dBA SNR</li>
+                            <li>基於 Seeed Studio 的 reSpeaker XMOS XVF3800</li>
+                        </ul>
+                    </li>
+                    <li><strong>揚聲器：</strong> 5W @ 4Ohms</li>
+                </ul>
+
+                <h2>特定元件</h2>
+                <h3>馬達規格</h3>
+                <table class="specs-table">
+                    <tr>
+                        <th>位置</th>
+                        <th>型號</th>
+                        <th>說明</th>
+                    </tr>
+                    <tr>
+                        <td>基座</td>
+                        <td>Custom Dynamixel XC330-M288-PG</td>
+                        <td>1x（XC330-M288-T，塑膠齒輪）</td>
+                    </tr>
+                    <tr>
+                        <td>天線</td>
+                        <td>Dynamixel XL330-M077-T</td>
+                        <td>2x</td>
+                    </tr>
+                    <tr>
+                        <td>Stewart 平臺</td>
+                        <td>Dynamixel XL330-M288-T</td>
+                        <td>6x</td>
+                    </tr>
+                </table>
+
+                <h3>控制器</h3>
+                <ul>
+                    <li><strong>主控制器：</strong> Raspberry 4 Compute Module（無線版本）</li>
+                    <li><strong>Raspberry CM4 控制板：</strong>
+                        <ul>
+                            <li>6.8 - 7.6V 由電源板供電</li>
+                            <li>Dynamixel 馬達 TTL 連接</li>
+                            <li>相機 CSI 連接</li>
+                            <li>麥克風陣列連接</li>
+                            <li>USB-C 輸出</li>
+                            <li>Raspberry 4 Compute Module - CM4104016（WiFi、4GB RAM、16GB 快閃記憶體）</li>
+                            <li>Wi-Fi 天線 - 2.4-5GHz 雙頻貼片天線，2.79 dBi，全向</li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <div class="external-link-box">
+                    <h3>📖 查看官方文檔</h3>
+                    <p>此頁面是官方 Hugging Face 文檔的中文摘要。如需完整的最新信息，請訪問：</p>
+                    <p><a href="https://huggingface.co/docs/reachy_mini/platforms/reachy_mini/hardware" target="_blank">🔗 Reachy Mini Hardware (English)</a></p>
+                </div>
+
+                <div class="nav-links">
+                    <a href="get_started.html">← Getting started</a>
+                    <a href="usage.html">Usage →</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>© 2026 Reachy Mini Documentation - 繁體中文翻譯摘要版本</p>
+    </footer>
+</body>
+</html>

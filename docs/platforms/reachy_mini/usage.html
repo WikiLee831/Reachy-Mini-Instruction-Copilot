@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reachy Mini 使用指南</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; margin: 0; background: #fff; }
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1.5rem 2rem; }
+        .header h1 { margin: 0; font-size: 2.5rem; }
+        .container { max-width: 1080px; margin: 2rem auto; padding: 0 1.5rem; }
+        .page-layout { display: grid; grid-template-columns: 280px 1fr; gap: 1.5rem; }
+        .sidebar { background: #f8f9fa; border: 1px solid #e1e5e9; border-radius: 18px; padding: 1.5rem; max-height: 90vh; overflow-y: auto; }
+        .sidebar-section-title { font-size: 0.85rem; font-weight: 700; letter-spacing: 0.05em; color: #64748b; text-transform: uppercase; }
+        .sidebar-list { list-style: none; padding: 0; margin: 0; }
+        .sidebar-list a { color: #475569; text-decoration: none; display: block; padding: 0.25rem 0; font-size: 0.95rem; }
+        .sidebar-list a:hover { color: #2563eb; }
+        .sidebar-list .sidebar-active a { color: #2563eb; font-weight: 600; }
+        .content h1 { margin-top: 0; font-size: 2rem; margin-bottom: 1rem; }
+        .content h2 { margin-top: 2rem; font-size: 1.5rem; }
+        .external-link-box { background: #e7f3ff; border: 1px solid #b3d9ff; border-radius: 8px; padding: 1.5rem; margin: 2rem 0; }
+        .external-link-box a { color: #0066cc; font-weight: 600; text-decoration: none; }
+        .nav-links { display: flex; justify-content: space-between; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #e1e5e9; }
+        .nav-links a { color: #2563eb; text-decoration: none; font-weight: 600; }
+        .footer { margin: 3rem 0 2rem; font-size: 0.95rem; color: #475569; text-align: center; }
+        @media (max-width: 980px) { .page-layout { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Reachy Mini 使用指南</h1>
+    </header>
+
+    <main class="container">
+        <div class="page-layout">
+            <aside class="sidebar">
+                <h3 class="sidebar-section-title">REACHY MINI (WIRELESS)</h3>
+                <ul class="sidebar-list">
+                    <li><a href="get_started.html">Getting started</a></li>
+                    <li><a href="hardware.html">Hardware</a></li>
+                    <li class="sidebar-active"><a href="usage.html">Usage</a></li>
+                    <li><a href="media_advanced.html">Media Advanced Controls</a></li>
+                    <li><a href="reset.html">Reset</a></li>
+                    <li><a href="install_daemon.html">Install Daemon</a></li>
+                    <li><a href="development.html">Development</a></li>
+                    <li><a href="reflash_iso.html">Reflash ISO</a></li>
+                </ul>
+            </aside>
+            <div class="content">
+                <h1>使用 Reachy Mini</h1>
+                <p>了解如何使用 Reachy Mini Control 應用程式，安裝和運行應用程式，以及使用 Python 編程您的機器人。</p>
+                
+                <h2>Reachy Mini Control 應用程式</h2>
+                <p>Reachy Mini Control 是控制和管理您機器人的主要方式。</p>
+                
+                <h2>安裝應用程式</h2>
+                <p>Reachy Mini 應用商店由 Hugging Face Spaces 提供支持。您可以直接從 Reachy Mini Control 一鍵安裝這些應用程式！</p>
+                
+                <h2>Python 編程</h2>
+                <p>使用 Python SDK 對您的 Reachy Mini 進行編程和自動化。</p>
+                
+                <div class="external-link-box">
+                    <h3>📖 查看完整文檔</h3>
+                    <p><a href="https://huggingface.co/docs/reachy_mini/platforms/reachy_mini/usage" target="_blank">🔗 完整使用指南 (English)</a></p>
+                </div>
+                <div class="nav-links">
+                    <a href="hardware.html">← Hardware</a>
+                    <a href="media_advanced.html">Media Advanced Controls →</a>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="footer"><p>© 2026 Reachy Mini Documentation</p></footer>
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REST API 文檔</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; margin: 0; background: #fff; color: #1a1a1a; }
+        .header { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 1.5rem 2rem; }
+        .header h1 { margin: 0; font-size: 2.5rem; }
+        .header p { margin: 0.75rem 0 0; color: rgba(255,255,255,0.9); max-width: 720px; }
+        .container { max-width: 1080px; margin: 2rem auto; padding: 0 1.5rem; }
+        .page-layout { display: grid; grid-template-columns: 280px 1fr; gap: 1.5rem; align-items: start; }
+        .sidebar { background: #f8f9fa; border: 1px solid #e1e5e9; border-radius: 18px; padding: 1.5rem; max-height: 90vh; overflow-y: auto; }
+        .sidebar-section { margin-bottom: 1.5rem; }
+        .sidebar-section:last-child { margin-bottom: 0; }
+        .sidebar-section-title { margin: 0 0 0.75rem; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.05em; color: #64748b; text-transform: uppercase; }
+        .sidebar-list { list-style: none; padding: 0; margin: 0; }
+        .sidebar-list li { margin-bottom: 0.5rem; }
+        .sidebar-list a { color: #475569; text-decoration: none; line-height: 1.6; font-size: 0.95rem; display: block; padding: 0.25rem 0; }
+        .sidebar-list a:hover { color: #2563eb; }
+        .sidebar-list .sidebar-active a { color: #2563eb; font-weight: 600; }
+        .content { background: white; }
+        .content h1 { margin-top: 0; font-size: 2rem; margin-bottom: 1rem; }
+        .content h2 { margin-top: 2rem; font-size: 1.5rem; margin-bottom: 1rem; color: #1a1a1a; }
+        .content h3 { font-size: 1.2rem; margin-top: 1.5rem; margin-bottom: 0.75rem; }
+        .content p { line-height: 1.8; color: #475569; margin: 0 0 1rem; }
+        .content ul, .content ol { margin: 1rem 0; padding-left: 2rem; }
+        .content li { margin-bottom: 0.5rem; line-height: 1.7; }
+        .highlight { background: #f0f4ff; border-left: 4px solid #2563eb; padding: 1rem; border-radius: 8px; margin: 1.5rem 0; }
+        .code-block { background: #f5f5f5; border: 1px solid #e1e5e9; border-radius: 8px; padding: 1rem; margin: 1rem 0; overflow-x: auto; font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace; font-size: 0.9rem; }
+        .external-link-box { background: #e7f3ff; border: 1px solid #b3d9ff; border-radius: 8px; padding: 1.5rem; margin: 2rem 0; }
+        .external-link-box h3 { margin-top: 0; color: #0066cc; }
+        .external-link-box a { color: #0066cc; font-weight: 600; text-decoration: none; }
+        .external-link-box a:hover { text-decoration: underline; }
+        .nav-links { display: flex; justify-content: space-between; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #e1e5e9; }
+        .nav-links a { color: #2563eb; text-decoration: none; font-weight: 600; }
+        .nav-links a:hover { text-decoration: underline; }
+        .footer { margin: 3rem 0 2rem; font-size: 0.95rem; color: #475569; text-align: center; }
+        @media (max-width: 980px) { .page-layout { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>REST API 文檔</h1>
+        <p>使用 REST API 控制 Reachy Mini 並集成到您的應用程式。</p>
+    </header>
+
+    <main class="container">
+        <div class="page-layout">
+            <aside class="sidebar">
+                <div class="sidebar-section">
+                    <h3 class="sidebar-section-title">SOFTWARE GUIDE</h3>
+                    <ul class="sidebar-list">
+                        <li><a href="../../index.html">SDK Overview</a></li>
+                        <li><a href="installation.html">Installation</a></li>
+                        <li><a href="core_concepts.html">Core Concepts</a></li>
+                        <li><a href="quickstart.html">Quickstart Guide</a></li>
+                        <li><a href="python_sdk.html">Python SDK</a></li>
+                        <li><a href="ai_integrations.html">AI Integrations</a></li>
+                        <li><a href="building_publishing_apps.html">Building & Publishing Apps</a></li>
+                        <li class="sidebar-active"><a href="rest_api.html">REST API</a></li>
+                        <li><a href="javascript_sdk.html">JavaScript SDK & Web Apps</a></li>
+                        <li><a href="media_architecture.html">Media Architecture</a></li>
+                        <li><a href="gstreamer_installation.html">GStreamer Installation</a></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <div class="content">
+                <h1>🔌 REST API 文檔</h1>
+                
+                <p>Reachy Mini 提供強大的 REST API，允許您從任何程式語言或平台控制機器人。</p>
+
+                <h2>API 基礎</h2>
+                <p>REST API 提供了對 Reachy Mini 所有功能的訪問，包括：</p>
+                <ul>
+                    <li>🤖 機器人運動控制</li>
+                    <li>📷 相機和媒體流</li>
+                    <li>🎤 音訊捕捉和播放</li>
+                    <li>⚙️ 系統配置和狀態</li>
+                </ul>
+
+                <h2>認證</h2>
+                <p>API 端點需要基本身份驗證。使用以下憑證：</p>
+                <ul>
+                    <li><strong>用戶名：</strong> pollen</li>
+                    <li><strong>密碼：</strong> root</li>
+                </ul>
+
+                <h2>主要端點</h2>
+                <div class="highlight">
+                    <p><strong>📌 注意：</strong> REST API 文檔的完整版本包括所有端點、請求/響應示例和錯誤代碼。請訪問下方的官方文檔鏈接。</p>
+                </div>
+
+                <h2>常見用例</h2>
+                <h3>1. 獲取機器人狀態</h3>
+                <p>檢索機器人的當前狀態和位置信息。</p>
+
+                <h3>2. 控制運動</h3>
+                <p>發送運動命令到機器人的各個關節。</p>
+
+                <h3>3. 多媒體流</h3>
+                <p>訪問相機流和音訊數據。</p>
+
+                <h2>集成示例</h2>
+                <p>REST API 可以與任何支持 HTTP 的程式語言集成。常見的集成包括：</p>
+                <ul>
+                    <li>JavaScript / Node.js Web 應用程式</li>
+                    <li>Python 腳本和應用程式</li>
+                    <li>C# / .NET 應用程式</li>
+                    <li>移動應用程式（iOS / Android）</li>
+                </ul>
+
+                <h2>相關文檔</h2>
+                <ul>
+                    <li><a href="python_sdk.html">Python SDK</a> - 用於 Python 開發的高級封裝</li>
+                    <li><a href="javascript_sdk.html">JavaScript SDK & Web Apps</a> - 用於 Web 開發</li>
+                </ul>
+
+                <div class="external-link-box">
+                    <h3>📖 查看完整的官方文檔</h3>
+                    <p>此頁面是官方 Hugging Face 文檔的摘要。如需完整的 API 端點列表、代碼示例和詳細說明，請訪問：</p>
+                    <p><a href="https://huggingface.co/docs/reachy_mini/main/en/SDK/rest_api" target="_blank">🔗 REST API Documentation (English)</a></p>
+                    <p>（在主分支上，因為 v1.7.1 版本尚未包含此文檔）</p>
+                </div>
+
+                <div class="nav-links">
+                    <a href="building_publishing_apps.html">← Building & Publishing Apps</a>
+                    <a href="javascript_sdk.html">JavaScript SDK & Web Apps →</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>© 2026 Reachy Mini Documentation - 繁體中文翻譯摘要版本</p>
+    </footer>
+</body>
+</html>
